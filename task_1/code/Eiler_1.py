@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Задаем функцию f(x, y)
 def f(x, y):
     return 3 * x - y / x
 
@@ -21,7 +20,6 @@ def euler_method(f, x0, y0, h, x_end):
     
     return np.array(x_values), np.array(y_values)
 
-# Параметры задачи
 x0 = 1  # Начальное значение x
 y0 = 1  # Начальное значение y
 h = 0.2  # Шаг
@@ -35,11 +33,4 @@ print("Решение методом Эйлера:")
 for i in range(len(x_vals)):
     print(f"x = {x_vals[i]:.1f}, y = {y_vals[i]:.4f}")
 
-# Построение графика
-plt.plot(x_vals, y_vals, marker='o', label="Метод Эйлера")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.title("Численное решение методом Эйлера")
-plt.legend()
-plt.grid(True)
-plt.show()
+

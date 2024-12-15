@@ -50,11 +50,13 @@
 ПОРЯДКА»\par}
     \vfill
     \hspace{0.5\linewidth}%
-    \begin{minipage}{0.5\linewidth}
-        Выполнилa: \par Охрименко Анастасия Дмитриевна \par
+    \begin{minipage}{0.4\linewidth}
+        Выполнилa: \par Охрименко А. Д. \par
         R3225, 409290 \par
         Поток: ДУ 23 1.1 \par
         Факультет: СУиР \par
+        Преподаватель: \par
+        Танченко Ю. В.
     \end{minipage}
     \vfill
     {\bfseries Санкт-Петербург, 2024\par}
@@ -193,7 +195,7 @@ y_{n+1} = y_n + h \cdot f(x_n, y_n),
 
 \subsection*{Пошаговые вычисления}
 
-\textbf{Шаг 0:}
+\textbf{Шаг 0:} 
 \[
 x_0 = 1, \quad y_0 = 1.
 \]
@@ -259,11 +261,11 @@ y_5 = y_4 + h \cdot f(x_4, y_4) = 3.1100 + 0.2 \cdot 3.6722 = 3.8444.
 \begin{array}{|c|c|c|c|}
 \hline
 n & x_n & f(x_n, y_n) & y_n \\ \hline
-0 & 1.0 & 2.0 & 1.0000 \\
-1 & 1.2 & 2.4333 & 1.4000 \\
-2 & 1.4 & 2.8524 & 1.8867 \\
-3 & 1.6 & 3.2642 & 2.4572 \\
-4 & 1.8 & 3.6722 & 3.1100 \\
+0 & 1.0 & 2.0 & 1.0000 \\ 
+1 & 1.2 & 2.4333 & 1.4000 \\ 
+2 & 1.4 & 2.8524 & 1.8867 \\ 
+3 & 1.6 & 3.2642 & 2.4572 \\ 
+4 & 1.8 & 3.6722 & 3.1100 \\ 
 5 & 2.0 & - & 3.8444 \\ \hline
 \end{array}
 \]
@@ -287,22 +289,22 @@ def f(x, y):
 def euler_method(f, x0, y0, h, x_end):
     x_values = [x0]
     y_values = [y0]
-
+    
     x = x0
     y = y0
-
+    
     while x < x_end:
         y = y + h * f(x, y)
         x = x + h
-        x_values.append(round(x, 4))
-        y_values.append(round(y, 4))
-
+        x_values.append(round(x, 4))  
+        y_values.append(round(y, 4)) 
+    
     return np.array(x_values), np.array(y_values)
 
-x0 = 1
-y0 = 1
-h = 0.2
-x_end = 2
+x0 = 1   
+y0 = 1    
+h = 0.2   
+x_end = 2 
 
 x_vals, y_vals = euler_method(f, x0, y0, h, x_end)
 
@@ -392,12 +394,12 @@ y_2 = y_1 + \frac{h}{2} \cdot \left[f(x_1, y_1) + f(x_2, y^*)\right] = 1.4433 + 
 \begin{array}{|c|c|c|c|c|}
 \hline
 n & x_n & y^* & f(x_n, y_n) & y_n \\ \hline
-0 & 1.0 & - & 2.0000 & 1.0000 \\
-1 & 1.2 & 1.4000 & 2.4333 & 1.4433 \\
-2 & 1.4 & 1.9125 & 2.8524 & 1.9632 \\
-3 & 1.6 & 2.5031 & 3.2642 & 2.5436 \\
-4 & 1.8 & 3.1615 & 3.6722 & 3.1983 \\
-5 & 2.0 & - & - & 3.9547 \\ \hline
+0 & 1.0 & - & 2.0000 & 1.0000 \\ 
+1 & 1.2 & 1.4000 & 2.4333 & 1.4433 \\ 
+2 & 1.4 & 1.9125 & 2.8524 & 1.9657 \\ 
+3 & 1.6 & 2.5031 & 3.2642 & 2.5675 \\ 
+4 & 1.8 & 3.1615 & 3.6722 & 3.2488 \\ 
+5 & 2.0 & - & - & 4.0100 \\ \hline
 \end{array}
 \]
 
@@ -414,24 +416,24 @@ def f(x, y):
 def modified_euler_method(f, x0, y0, h, x_end):
     x_values = [x0]
     y_values = [y0]
-
+    
     x = x0
     y = y0
-
+    
     while x < x_end:
-        y_pred = y + h * f(x, y)
-        x_next = x + h
-        y = y + (h / 2) * (f(x, y) + f(x_next, y_pred))
+        y_pred = y + h * f(x, y)   
+        x_next = x + h           
+        y = y + (h / 2) * (f(x, y) + f(x_next, y_pred))  
         x = x_next
-
-        x_values.append(round(x, 4))
-        y_values.append(round(y, 4))
-
+        
+        x_values.append(round(x, 4))  
+        y_values.append(round(y, 4)) 
+    
     return np.array(x_values), np.array(y_values)
 
-x0 = 1
-y0 = 1
-h = 0.2
+x0 = 1    
+y0 = 1    
+h = 0.2   
 x_end = 2
 
 x_vals, y_vals = modified_euler_method(f, x0, y0, h, x_end)
@@ -461,8 +463,9 @@ print(results)
 Решение & \( x = 1.2 \) & \( x = 1.4 \) & \( x = 1.6 \) & \( x = 1.8 \) & \( x = 2.0 \) & Абс. погрешн. & Относ. погрешн. \\ \hline
 Точное & 1.4400 & 1.9600 & 2.5600 & 3.2400 & 4.0000 & - & - \\ \hline
 Эйлер & 1.4000 & 1.8867 & 2.4572 & 3.1100 & 3.8444 & 0.1556 & 3.89\% \\ \hline
-Мод. Эйлер & 1.4433 & 1.9632 & 2.5436 & 3.1983 & 3.9547 & 0.0453 & 1.13\% \\ \hline
+Мод. Эйлер & 1.4433 & 1.9657 & 2.5675 & 3.2488 & 4.0100 & 0.0453 & 0.25\% \\ \hline 
 \end{tabular}
 \end{table}
 
 \end{document}
+
